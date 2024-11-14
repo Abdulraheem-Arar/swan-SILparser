@@ -19,9 +19,10 @@ COMMAND=["swift", "build"]
 # As of Xcode 12.5, dumping SIL with unsafeFlags requires using --use-integrated-swift-driver
 if platform.system() == "Darwin":
   xcode_version = subprocess.check_output(["/usr/bin/xcodebuild", "-version"])
-  version_search = re.search("Xcode 12\.([0-9]+)", xcode_version.decode())
+  version_search = re.search("Xcode ([0-9]+)\\.([0-9]+)", xcode_version.decode())
+  xcode_version = float(version_search.group(1) + "." + version_search.group(2))
   if version_search:
-    if int(version_search.group(1)) >= 5:
+    if xcode_version >= 12.5:
       COMMAND.append("--use-integrated-swift-driver")
 else: # Linux requires this flag, too
   COMMAND.append("--use-integrated-swift-driver")
@@ -71,7 +72,7 @@ if output.returncode != 0:
 
 print("")
 
-sil_search = re.search('(.|\s)*?\n\n\n\n', txt.split("\nsil_stage canonical")[1])
+sil_search = re.search('(.|\\s)*?\\n\\n\\n\\n', txt.split("\nsil_stage canonical")[1])
 if sil_search:
   with open(OUTPUT_SIL, "w") as f:
     f.writelines("sil_stage canonical"+sil_search.group(0))
