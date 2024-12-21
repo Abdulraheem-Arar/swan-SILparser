@@ -1,0 +1,10 @@
+[
+  {
+    "name": "DBHelperCounter",
+    "description": "Counts (and prints) how many times insert() is called on DBHelper.",
+    "advice": "N/A",
+    "errors": [
+      
+    ]
+  }
+]
