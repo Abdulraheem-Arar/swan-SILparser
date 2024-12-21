@@ -1,0 +1,37 @@
+[
+  {
+    "name": "testing",
+    "description": "",
+    "advice": "",
+    "paths": [
+      {
+        "source": {
+          "name": "test.source() -> Swift.String",
+          "description": "generic source"
+        },
+        "sink": {
+          "name": "test.sink(sunk: Swift.String) -> ()",
+          "description": "generic sink"
+        },
+        "path": [
+          "test.swift:17:33",
+          "test.swift:16:3"
+        ]
+      },
+      {
+        "source": {
+          "name": "test.source() -> Swift.String",
+          "description": "generic source"
+        },
+        "sink": {
+          "name": "test.sink(sunk: Swift.String) -> ()",
+          "description": "generic sink"
+        },
+        "path": [
+          "test.swift:10:17",
+          "test.swift:11:3"
+        ]
+      }
+    ]
+  }
+]

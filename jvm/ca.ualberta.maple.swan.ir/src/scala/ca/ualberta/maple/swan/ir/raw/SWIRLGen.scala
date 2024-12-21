@@ -379,6 +379,7 @@ class SWIRLGen {
           case inst: SILOperator.deallocValueBuffer => visitDeallocValueBuffer(result, inst, ctx)
           case inst: SILOperator.debugValue => visitDebugValue(result, inst, ctx)
           case inst: SILOperator.debugValueAddr => visitDebugValueAddr(result, inst, ctx)
+          case inst: SILOperator.debugStep => visitDebugStep(result, inst, ctx)
           case inst: SILOperator.load => visitLoad(result, inst, ctx)
           case inst: SILOperator.store => visitStore(result, inst, ctx)
           case inst: SILOperator.loadBorrow => visitLoadBorrow(result, inst, ctx)
@@ -684,6 +685,13 @@ class SWIRLGen {
     }
     NOP
   }
+
+  def visitDebugStep(r: Option[SILResult], I: SILOperator.debugStep, ctx: Context): ArrayBuffer[RawInstructionDef] = {
+    NOP
+  }
+
+
+
 
   /* ACCESSING MEMORY */
 

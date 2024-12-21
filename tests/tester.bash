@@ -111,6 +111,7 @@ test_directory() {
       rm -rf ${OUTPUT_DIR}; mkdir ${OUTPUT_DIR}
       TEST_TMPDIR=${OUTPUT_DIR}
     fi
+mkdir -p swan-dir
 
     IS_TAINT=
     IS_TYPESTATE=

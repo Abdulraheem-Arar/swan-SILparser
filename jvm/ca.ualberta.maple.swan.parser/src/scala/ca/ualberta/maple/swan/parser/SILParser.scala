@@ -627,6 +627,14 @@ class SILParser extends SILPrinter {
         SILInstruction.operator(SILOperator.debugValueAddr(operand, attributes))
       }
 
+      case "debug_step" =>{
+        SILInstruction.operator(SILOperator.debugStep())
+      }
+
+
+ 
+
+
         // *** PROFILING ***
 
       case "increment_profiler_counter" => {
@@ -675,8 +683,10 @@ class SILParser extends SILPrinter {
       }
       case "begin_borrow" => {
         val lexical = skip("[lexical]")
+        val pointerEscape = skip("[pointer_escape]") 
+        val varDecl = skip("[var_decl]") 
         val operand = parseOperand()
-        SILInstruction.operator(SILOperator.beginBorrow(lexical, operand))
+        SILInstruction.operator(SILOperator.beginBorrow(lexical, operand, pointerEscape, varDecl))
       }
       case "end_borrow" => {
         val operand = parseOperand()

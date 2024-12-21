@@ -13,7 +13,9 @@ let package = Package(
     targets: [
         .target(
             name: "test",
-            dependencies: ["ColorizeSwift"],
+              dependencies: ["ColorizeSwift"],
+            path:"Sources/test",
+            sources: ["main.swift"],
             swiftSettings: [
               .unsafeFlags([
                 "-Xfrontend",
@@ -21,7 +23,7 @@ let package = Package(
                 "-Xllvm",
                 "-sil-print-debuginfo",
                 "-Xllvm",
-                "-sil-print-before=SerializeSILPass"
+                "-sil-print-before=SerializeSILPass",
                 ])
             ])
     ]

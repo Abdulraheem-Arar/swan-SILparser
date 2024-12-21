@@ -5,4 +5,5 @@
 
 source ../../tester.bash
 TYPESTATE_SPEC=spec.json
+import "SQLite.SQLite.swift.sil"
 test_directory

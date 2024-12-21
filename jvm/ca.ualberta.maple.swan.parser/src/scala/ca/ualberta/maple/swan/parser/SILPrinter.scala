@@ -278,7 +278,9 @@ class SILPrinter extends Printer {
         print(operand)
         print(whenEmpty = false, ", ", attributes, ", ", "", (a: SILDebugAttribute) => print(a))
       }
-
+      case SILOperator.debugStep() => {
+        print("debug_step")
+      }
         // *** ACCESSING MEMORY ***
 
       case SILOperator.load(kind: Option[SILLoadOwnership], operand) => {
@@ -309,9 +311,11 @@ class SILPrinter extends Printer {
         print(" to ")
         print(to)
       }
-      case SILOperator.beginBorrow(lexical, operand) => {
+      case SILOperator.beginBorrow(lexical, operand, pointerEscape, varDecl) => {
         print("begin_borrow ")
         print("[lexical] ", lexical)
+        print("[pointer_escape]", pointerEscape)
+        print("[var_decl]", varDecl)
         print(operand)
       }
       case SILOperator.endBorrow(operand) => {
